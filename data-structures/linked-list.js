@@ -75,12 +75,27 @@ class LinkedList {
     }
     return current;
   }
-  set(index, value) {
+  set(index, val) {
     let node = this.get(index);
     if (node) {
-      node.val = value;
+      node.val = val;
       return true;
     }
     return false;
+  }
+  insert(index, val) {
+    let nodeAfter;
+    let nodeBefore;
+    let newNode;
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(val);
+    if (index === 0) return !!this.unshift(val);
+    newNode = new Node(val);
+    nodeBefore = this.get(index - 1);
+    nodeAfter = prev.next;
+    nodeBefore.next = newNode;
+    newNode.next = nodeAfter;
+    this.length++;
+    return true;
   }
 }
