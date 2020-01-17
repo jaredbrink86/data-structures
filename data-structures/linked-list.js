@@ -40,6 +40,16 @@ class LinkedList {
     }
     return current;
   }
+  shift() {
+    if (this.length === 0) return undefined;
+    let removed = this.head;
+    this.head = this.head.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return removed;
+  }
 }
 
 let list = new LinkedList();
