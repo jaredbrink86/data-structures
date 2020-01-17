@@ -50,10 +50,17 @@ class LinkedList {
     }
     return removed;
   }
+  unshift(val) {
+    let newNode = new Node(val);
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+    }
+    this.head.next = this.head;
+    this.head = newNode;
+    this.length++;
+    this.tail = newNode;
+    return this;
+  }
 }
-
-let list = new LinkedList();
-list.push(3);
-list.push(4);
-list.push(5);
-list.pop();
