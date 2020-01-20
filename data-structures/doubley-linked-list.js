@@ -122,7 +122,6 @@ class DoublyLinkedList {
     this.length--;
     return removed;
   }
-  reverse() {}
 }
 
 let newList = new DoublyLinkedList();
