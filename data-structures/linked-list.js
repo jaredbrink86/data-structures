@@ -121,10 +121,3 @@ class LinkedList {
     return this;
   }
 }
-
-newList = new LinkedList();
-newList.push(13);
-newList.push(27);
-newList.push(85);
-newList.push(30);
-newList.remove(2);
