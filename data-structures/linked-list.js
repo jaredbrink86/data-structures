@@ -106,11 +106,26 @@ class LinkedList {
     this.length--;
     return removed;
   }
+  reverse() {
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    let next;
+    let prev = null;
+    let count = 0;
+    while (count < this.length) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    return this;
+  }
 }
 
-newList = new LinkedList(12);
+newList = new LinkedList();
 newList.push(13);
 newList.push(27);
 newList.push(85);
-newList.push(27);
+newList.push(30);
 newList.remove(2);
