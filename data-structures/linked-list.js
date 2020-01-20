@@ -110,10 +110,9 @@ class LinkedList {
     let current = this.head;
     this.head = this.tail;
     this.tail = current;
-    let next;
     let prev = null;
-    let count = 0;
-    while (count < this.length) {
+    let next;
+    for (let i = 0; i < this.length; i++) {
       next = current.next;
       current.next = prev;
       prev = current;
