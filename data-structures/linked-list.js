@@ -6,18 +6,19 @@ class Node {
 }
 
 class LinkedList {
-  constructort() {
-    this.length = 0;
+  constructor() {
     this.head = null;
     this.tail = null;
+    this.length = 0;
   }
   push(val) {
-    let node = new Node(val);
+    var node = new Node(val);
     if (!this.head) {
       this.head = node;
-      this.tail = node;
+      this.tail = this.head;
     } else {
       this.tail.next = node;
+      this.tail = node;
     }
     this.length++;
     return this;
@@ -51,7 +52,7 @@ class LinkedList {
     return removed;
   }
   unshift(val) {
-    let newNode = new Node(val);
+    const newNode = new Node(val);
     if (this.length === 0) {
       this.head = newNode;
       this.tail = newNode;
@@ -84,18 +85,32 @@ class LinkedList {
     return false;
   }
   insert(index, val) {
-    let nodeAfter;
-    let nodeBefore;
-    let newNode;
     if (index < 0 || index > this.length) return false;
     if (index === this.length) return !!this.push(val);
     if (index === 0) return !!this.unshift(val);
-    newNode = new Node(val);
-    nodeBefore = this.get(index - 1);
-    nodeAfter = prev.next;
+    var newNode = new Node(val);
+    var nodeBefore = this.get(index - 1);
+    var nodeAfter = nodeBefore.next;
     nodeBefore.next = newNode;
     newNode.next = nodeAfter;
     this.length++;
     return true;
   }
+  remove(index) {
+    if (index < 0 || index > this.length) return undefined;
+    if (index === this.length - 1) return this.pop().val;
+    if (index === 0) return this.shift();
+    let nodeBeforeIndex = this.get(index - 1);
+    let removed = nodeBeforeIndex.next;
+    nodeBeforeIndex.next = removed.next;
+    this.length--;
+    return removed;
+  }
 }
+
+newList = new LinkedList(12);
+newList.push(13);
+newList.push(27);
+newList.push(85);
+newList.push(27);
+newList.remove(2);
