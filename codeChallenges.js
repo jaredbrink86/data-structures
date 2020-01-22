@@ -6,3 +6,11 @@ function getMiddle(string) {
     return string.charAt(middle - 1) + string.charAt(middle);
   }
 }
+
+function launchAll(launchMissile) {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+      launchMissile(i), i * 1000;
+    });
+  }
+}

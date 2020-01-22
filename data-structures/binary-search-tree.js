@@ -49,5 +49,3 @@ class BinarySearchTree {
     return false;
   }
 }
-
-function getMiddle(s) {}
