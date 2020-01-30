@@ -46,7 +46,7 @@ function numPrimorial(n) {
 
 // return the lowest number you can add or subtract from a, before it becomes a multiple of x
 function minimum(a, x) {
-  let maxAdded = a % x;
-  let minAdded = x - maxAdded;
-  return maxAdded < minAdded ? maxAdded : minAdded;
+  let numToSubtract = a % x;
+  let numToAdd = x - maxAdded;
+  return numToSubtract < numToAdd ? numToSubtract : numtoAdd;
 }
