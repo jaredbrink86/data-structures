@@ -46,17 +46,7 @@ function numPrimorial(n) {
 
 // return the lowest number you can add or subtract from a, before it becomes a multiple of x
 function minimum(a, x) {
-  let totalAdded = a;
-  let totalSubtracted = a;
-  let addedCount = 0;
-  let subtractedCount = 0;
-  while (totalAdded % x !== 0) {
-    totalAdded++;
-    addedCount++;
-  }
-  while (totalSubtracted % x !== 0) {
-    totalSubtracted--;
-    subtractedCount++;
-  }
-  return addedCount < subtractedCount ? addedCount : subtractedCount;
+  let maxAdded = a % x;
+  let minAdded = x - maxAdded;
+  return maxAdded < minAdded ? maxAdded : minAdded;
 }
