@@ -22,6 +22,14 @@ function sumTwoSmallestNumbers(numbers) {
   return numbers[0] + numbers[1];
 }
 
+function isPrime(value) {
+  for (let i = 2; i < value; i++) {
+    if (value % i === 0) {
+      return false;
+    }
+  }
+  return value > 1;
+}
 function numPrimorial(n) {
   let count1 = 1;
   let count2 = 1;
@@ -36,11 +44,19 @@ function numPrimorial(n) {
   return result;
 }
 
-function isPrime(value) {
-  for (let i = 2; i < value; i++) {
-    if (value % i === 0) {
-      return false;
-    }
+// return the lowest number you can add or subtract from a, before it becomes a multiple of x
+function minimum(a, x) {
+  let totalAdded = a;
+  let totalSubtracted = a;
+  let addedCount = 0;
+  let subtractedCount = 0;
+  while (totalAdded % x !== 0) {
+    totalAdded++;
+    addedCount++;
   }
-  return value > 1;
+  while (totalSubtracted % x !== 0) {
+    totalSubtracted--;
+    subtractedCount++;
+  }
+  return addedCount < subtractedCount ? addedCount : subtractedCount;
 }
