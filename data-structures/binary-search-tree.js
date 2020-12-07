@@ -53,7 +53,7 @@ class BinarySearchTree {
     let values = [];
     let current;
     while (queue.length) {
-      current = this.shift();
+      current = queue.shift();
       values.push(current.val);
       if (current.left) queue.push(current.left);
       if (current.right) queue.push(current.right);
@@ -62,14 +62,17 @@ class BinarySearchTree {
   }
 
   DFSPreOrder() {
-    let values = [];
-    let current = this.root;
-    const traverse = node => {
-      values.push(node.val);
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
-    };
-    traverse(current);
-    return values;
+    values = [];
+    function traverseTree(node) {
+      values.push(node.value);
+      if(node.left) {
+        traverseTree(node.left)
+      }
+      if(node.right) {
+        traverseTree(node.right)
+      }
+    }
+    traverseTree(this.root)
+    return values
   }
 }
