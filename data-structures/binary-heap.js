@@ -21,38 +21,38 @@ class MaxBinaryHeap {
     extractMax() {
        const max = this.values[0];
        const end = this.values.pop();
-       this.values[0] = end;
-       this.sinkDown();
-       return max
+       if(this.values.length > 0) {
+           this.values[0] = end;
+           this.sinkDown();
+        }
+        return max
     }
     sinkDown() {
-        let idx = 0
-        const length = this.values.lengtht
-        const element = this.values[0];
-        while(true) {
+        let idx = 0;
+        let element = this.values[0];
+        let leftChild, rightChild
+        while(true){
             let leftChildIdx = 2 * idx + 1;
             let rightChildIdx = 2 * idx + 2;
-            let leftChild, rightChild;
-            let swap = null;
-            if(leftChildIdx < length) {
-                leftChild = this.values[leftChildIdx];
-                if(leftChild > element) {
-                    swap = leftChildIdx
-                }
-            } 
-            if(rightChildIdx < length) {
-                rightChild = this.values[rightChildIdx]
-                if(
-                    (swap === null && rightChild > element) || 
-                    (swap !== null && rightChild > LeftChild)) {
-                    
-                }
+            leftChild = this.values[leftChildIdx]
+            rightChild = this.values[rightChildIdx]
+            if(leftChild > element && leftChild > rightChild) {
+                this.values[idx] = leftChild;
+                this.values[leftChildIdx] = element;
+                idx = leftChildIdx
+                element = this.values[leftChildIndx]
             }
-            if(swap === null) break;
-            this.values[idx] = this.values[swap];
-            this.values[swap] = element;
-            idx = swap;
+            if(rightChild > element && rightChild > leftChild) {
+                this.values[idx] = rightChild
+                this.values[rightChild] = element;
+                idx = rightChildIdx
+                element = this.values[rightChildIdx]
+            }
+            if((rightChild < element && leftChild < element) || (leftChild === undefined && rightChild === undefined)) break;
         }
     }
 }
 
+[4,89,76,65,54,33,11,23]
+
+100
